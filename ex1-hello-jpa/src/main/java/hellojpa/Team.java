@@ -1,7 +1,5 @@
 package hellojpa;
 
-import org.hibernate.annotations.common.util.impl.Log;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +14,7 @@ public class Team {
     private String name;
 
     @OneToMany(mappedBy = "team")
-    private List<Member> members = new ArrayList<>();
-
-    public void addMember(Member member) {
-        member.setTeam(this);
-        members.add(member);
-    }
+    private List<Member> members = new ArrayList<>()
 
     public Long getId() {
         return id;
@@ -37,22 +30,5 @@ public class Team {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Member> getMembers() {
-        return members;
-    }
-
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
-
-    @Override
-    public String toString() {
-        return "Team{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", members=" + members +
-                '}';
     }
 }
